@@ -1,0 +1,2 @@
+# slotca-pralnice
+slotca

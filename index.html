@@ -50,6 +50,12 @@
       attribution: "&copy; OpenStreetMap"
     }).addTo(map);
 
+    function capitalizeWords(text) {
+      return text.toLowerCase().replace(/\b\w/g, function (char) {
+        return char.toUpperCase();
+      });
+    }
+
     var pralnice = [
       {
         ime: "Križan d.o.o.",
@@ -81,6 +87,12 @@
       }
     ];
 
+    pralnice.forEach(p => p.ime = capitalizeWords(p.ime));
+
+    pralnice.sort((a, b) =>
+      a.ime.localeCompare(b.ime, "sl", { sensitivity: "base" })
+    );
+
     pralnice.forEach(function (p) {
       var marker = L.marker([p.lat, p.lng])
         .addTo(map)
@@ -103,4 +115,3 @@
 
 </body>
 </html>
-``
